@@ -202,8 +202,8 @@ async function sha256(message) {
 async function checkPassword() {
     const input = document.getElementById("loginPassword").value;
 
-    // Hash van "phantoms2026"
-    const correctHash = "b4b7f3b5a3f0b2e8c7b6d3f4a1c0e9d8f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0";
+    // Hash van "SHA"
+    const correctHash = "e67bd2742294518a1d1a02a428119b91351c91e2845f876bb29ca984937fd9b1";
 
     const inputHash = await sha256(input);
 

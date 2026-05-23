@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Editor – Antwerp Phantoms</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #e60000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .block {
+            background: #1c1c1c;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #333;
+        }
+
+        .block h2 {
+            margin-top: 0;
+            color: #e60000;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: none;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        input[type="color"] {
+            padding: 3px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 15px 25px;
+            background: #e60000;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: block;
+            margin: 30px auto;
+        }
+
+        button:hover {
+            background: #b30000;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        /* LOGIN OVERLAY */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000d;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #loginBox {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            width: 300px;
+            text-align: center;
+        }
+
+        #loginBox h2 {
+            color: #e60000;
+        }
+
+        #loginError {
+            color: #ff4444;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- LOGIN OVERLAY -->
+<div id="loginOverlay">
+    <div id="loginBox">
+        <h2>Beveiligde Editor</h2>
+        <p>Voer het wachtwoord in om verder te gaan</p>
+        <input type="password" id="loginPassword" placeholder="Wachtwoord">
+        <button onclick="checkPassword()">Login</button>
+        <div id="loginError">Fout wachtwoord</div>
+    </div>
+</div>
+
+<h1>Antwerp Phantoms – Website Editor</h1>
+
+<!-- LOGO -->
+<div class="block">
+    <h2>Logo toevoegen</h2>
+    <label>Logo URL:</label>
+    <input type="text" id="logoUrl" placeholder="https://...">
+    <p class="note">Gebruik een directe afbeeldingslink (PNG/JPG/SVG).</p>
+</div>
+
+<!-- INFO TEKST -->
+<div class="block">
+    <h2>Tekst aanpassen</h2>
+
+    <label>Over ons tekst:</label>
+    <textarea id="infoText" rows="4" placeholder="Nieuwe tekst voor de info-sectie..."></textarea>
+
+    <label>Contact email:</label>
+    <input type="text" id="contactEmail" placeholder="info@antwerpphantoms.be">
+</div>
+
+<!-- NIEUWE SECTIE -->
+<div class="block">
+    <h2>Nieuwe sectie toevoegen</h2>
+
+    <label>Titel:</label>
+    <input type="text" id="newSectionTitle" placeholder="Titel van de nieuwe sectie">
+
+    <label>Inhoud:</label>
+    <textarea id="newSectionContent" rows="4" placeholder="Tekst voor de nieuwe sectie..."></textarea>
+</div>
+
+<!-- SPONSORS -->
+<div class="block">
+    <h2>Sponsors toevoegen</h2>
+
+    <label>Upload sponsorlogo's:</label>
+    <input type="file" id="sponsorFiles" multiple accept="image/*">
+    <p class="note">Je kan meerdere logo’s tegelijk uploaden. Ze worden automatisch in een grid geplaatst.</p>
+</div>
+
+<!-- THEMA -->
+<div class="block">
+    <h2>Kleuren & Thema</h2>
+
+    <label>Primaire kleur (accent):</label>
+    <input type="color" id="primaryColor" value="#e60000">
+
+    <label>Achtergrondkleur:</label>
+    <input type="color" id="backgroundColor" value="#0d0d0d">
+
+    <label>Tekstkleur:</label>
+    <input type="color" id="textColor" value="#ffffff">
+</div>
+
+<!-- BUTTON -->
+<button onclick="updateSite()">Update website & download nieuwe index.html</button>
+
+<script src="editor.js"></script>
+
+<script>
+/* SHA-256 hashing */
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* Wachtwoordcontrole */
+async function checkPassword() {
+    const input = document.getElementById("loginPassword").value;
+
+    // Hash van "phantoms2026"
+    const correctHash = "b4b7f3b5a3f0b2e8c7b6d3f4a1c0e9d8f5a4b3c2d1e0f9a8b7c6d5e4f3a2b1c0";
+
+    const inputHash = await sha256(input);
+
+    if (inputHash === correctHash) {
+        document.getElementById("loginOverlay").style.display = "none";
+    } else {
+        document.getElementById("loginError").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>

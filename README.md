@@ -31,8 +31,8 @@ This version stores edits, sponsor logos, albums, and documents in browser local
 
 ## Security in version 1.1.4
 
-- Default Settings access password: `admin`
-- Default administrator password for Security Settings: `1234Hoedjevanpapier$`
+- *
+- *
 - Passwords are stored as SHA-256 hashes in browser storage.
 - This is client-side protection for the prototype. It is not equivalent to server-side authentication and must be replaced before a production public deployment.
 

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Website Settings v1.1.4 | Antwerp Phantoms</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="settings-body settings-is-locked">
+  <div id="settingsLoginGate" class="login-gate">
+    <form id="settingsLoginForm" class="login-card">
+      <img src="assets/images/team-logo.png" alt="Antwerp Phantoms logo" class="login-logo">
+      <p class="eyebrow">Protected administration</p>
+      <h1>Settings Access</h1>
+      <p>Enter the authorised Settings password to continue.</p>
+      <label>Settings password<input id="settingsAccessPassword" type="password" autocomplete="current-password" autofocus></label>
+      <button class="primary-button full-width" type="submit">Unlock Settings</button>
+      <div id="loginMessage" class="security-message" aria-live="polite"></div>
+      <a href="index.html" class="login-back-link">← Return to website</a>
+    </form>
+  </div>
+  <div class="settings-shell" id="settingsApplication" aria-hidden="true" hidden inert>
+    <aside class="settings-sidebar">
+      <img src="assets/images/team-logo.png" alt="Team logo" class="settings-logo">
+      <p class="eyebrow">Website manager</p>
+      <h1>Settings</h1>
+      <p>Manage website version 1.1.4 without editing code.</p>
+      <nav class="settings-tabs" aria-label="Settings sections">
+        <button class="settings-tab active" data-tab="general">General</button>
+        <button class="settings-tab" data-tab="pages">Page Content</button>
+        <button class="settings-tab" data-tab="sponsors">Sponsors</button>
+        <button class="settings-tab" data-tab="nepihl">NEPIHL27</button>
+        <button class="settings-tab" data-tab="albums">Albums</button>
+        <button class="settings-tab" data-tab="security">Security Settings</button>
+        <button class="settings-tab" data-tab="publish">Publish</button>
+      </nav>
+      <a href="index.html" class="secondary-button full-width">← View Website</a>
+    </aside>
+
+    <main class="settings-main">
+      <header class="settings-topbar">
+        <div>
+          <p class="eyebrow">Antwerp Phantoms Para Ice Hockey</p>
+          <h2 id="settingsHeading">General Settings</h2>
+        </div>
+        <div id="saveStatus" class="save-status">All changes saved locally</div>
+      </header>
+
+      <section class="settings-panel active" data-panel="general">
+        <div class="form-card">
+          <h3>Website Identity</h3>
+          <label>Website title<input id="titleInput" type="text"></label>
+          <label>Tagline<input id="taglineInput" type="text"></label>
+          <label>Home page heading<input id="homeHeadingInput" type="text"></label>
+          <label>Home page introduction<textarea id="homeTextInput" rows="6"></textarea></label>
+          <div class="button-row">
+            <button id="saveGeneral" class="primary-button">Save General Settings</button>
+            <button id="resetAll" class="danger-button">Reset Test Data</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-panel" data-panel="pages">
+        <div class="form-card">
+          <h3>Page Content</h3>
+          <label>Select page
+            <select id="pageSelect">
+              <option value="training">Training Hours</option>
+              <option value="information">Information</option>
+              <option value="contacts">Contacts</option>
+              <option value="nepihl27">NEPIHL27</option>
+            </select>
+          </label>
+          <label>Page title<input id="pageTitleInput" type="text"></label>
+          <label>Page content<textarea id="pageTextInput" rows="10"></textarea></label>
+          <p class="form-help">Page text is displayed in English on the public website.</p>
+          <button id="savePage" class="primary-button">Save Page Content</button>
+        </div>
+        <div class="form-card" id="informationDocumentsCard">
+          <h3>Information Documents</h3>
+          <p class="form-help">Upload documents that visitors and players can download below the text on the Information page. PDF is recommended; common Office document formats are also supported in this test version.</p>
+          <label>Display title<input id="documentTitle" type="text" placeholder="Team information, registration form, rules..."></label>
+          <label>Document file<input id="documentFile" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.rtf"></label>
+          <button id="addDocument" class="primary-button">Upload Document</button>
+        </div>
+        <div class="form-card" id="informationDocumentsManagerCard">
+          <h3>Manage Information Documents</h3>
+          <div id="documentManager" class="manager-list"></div>
+        </div>
+      </section>
+
+      <section class="settings-panel" data-panel="sponsors">
+        <div class="form-card">
+          <h3>Add Sponsor</h3>
+          <div class="two-column-form">
+            <label>Sponsor name<input id="sponsorName" type="text" placeholder="Sponsor name"></label>
+            <label>Sponsor group
+              <select id="sponsorGroup">
+                <option value="current">Current Para Ice Hockey Sponsors</option>
+                <option value="permanent">Club & Permanent Partners</option>
+              </select>
+            </label>
+          </div>
+          <label>Website (optional)<input id="sponsorUrl" type="url" placeholder="https://..."></label>
+          <label>Logo image<input id="sponsorImage" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
+          <p class="form-help">The logo is fitted automatically without stretching. In this test version it is stored locally in this browser.</p>
+          <button id="addSponsor" class="primary-button">Add Sponsor</button>
+        </div>
+        <div class="form-card">
+          <h3>Manage Sponsors</h3>
+          <div id="sponsorManager" class="manager-list"></div>
+        </div>
+      </section>
+
+
+      <section class="settings-panel" data-panel="nepihl">
+        <div class="form-card">
+          <h3>NEPIHL27 Page</h3>
+          <p class="form-help">Manage the four responsive content boxes shown on the NEPIHL27 page. Each box grows automatically. You can attach a link, image or document; visitors can click the entire box to open it.</p>
+          <div id="nepihlBoxEditor" class="nepihl-editor-grid"></div>
+          <button id="saveNepihlBoxes" class="primary-button">Save NEPIHL27 Boxes</button>
+        </div>
+      </section>
+
+      <section class="settings-panel" data-panel="albums">
+        <div class="form-card">
+          <h3>Create Photo Album</h3>
+          <label>Album title<input id="albumTitle" type="text" placeholder="Tournament in ..."></label>
+          <label>Description<textarea id="albumDescription" rows="4"></textarea></label>
+          <label>Photos<input id="albumImages" type="file" multiple accept="image/png,image/jpeg,image/webp"></label>
+          <p class="form-help">A Gallery menu item appears automatically after the first album is created.</p>
+          <button id="addAlbum" class="primary-button">Create Album</button>
+        </div>
+        <div class="form-card">
+          <h3>Manage Albums</h3>
+          <div id="albumManager" class="manager-list"></div>
+        </div>
+      </section>
+
+
+      <section class="settings-panel" data-panel="security">
+        <div class="form-card">
+          <h3>Administrator Verification</h3>
+          <p class="form-help">Enter the administrator password to unlock password management. The default administrator password for this test version is set separately from the Settings access password.</p>
+          <label>Administrator password<input id="administratorPassword" type="password" autocomplete="current-password"></label>
+          <button id="unlockSecurity" class="primary-button">Unlock Security Settings</button>
+          <div id="securityUnlockMessage" class="security-message" aria-live="polite"></div>
+        </div>
+
+        <div class="form-card security-locked" id="passwordManagementCard">
+          <h3>Settings Access Password</h3>
+          <p class="form-help">Change the password required to open the Settings area. The readable password itself is not saved. A local one-way verification value is stored so this also works when the website is opened directly from disk.</p>
+          <label>New Settings password<input id="newSettingsPassword" type="password" autocomplete="new-password"></label>
+          <label>Confirm new Settings password<input id="confirmSettingsPassword" type="password" autocomplete="new-password"></label>
+          <div class="button-row">
+            <button id="changeSettingsPassword" class="primary-button" disabled>Change Encrypted Password</button>
+            <button id="resetSettingsPassword" class="danger-button" disabled>Reset to Default “admin”</button>
+          </div>
+          <div id="passwordChangeMessage" class="security-message" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="settings-panel" data-panel="publish">
+        <div class="form-card publish-card">
+          <h3>GitHub Publishing</h3>
+          <span class="status-badge">Version 1.1.4 • Test mode</span>
+          <p>This prototype saves changes in the browser using local storage. It does not yet write to GitHub.</p>
+          <p>The production version will publish approved changes to <strong>antwerpparaicehockey/pages</strong>, while preserving the existing PDF.</p>
+          <button class="primary-button" disabled>Publish to GitHub (next version)</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="data.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

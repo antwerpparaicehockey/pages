@@ -1,193 +1,67 @@
-<!DOCTYPE html>
-<html lang="nl">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antwerp Phantoms Para Ice Hockey</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: #0d0d0d;
-            color: white;
-        }
-
-        header {
-            background: linear-gradient(135deg, #111, #222, #111);
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 3px solid #e6db00;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        header p {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 20px;
-            background: #1a1a1a;
-            border-bottom: 2px solid #333;
-        }
-
-        nav a {
-            color: #e6db00;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .section {
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            border-left: 5px solid hsl(234, 100%, 35%);
-            padding-left: 15px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            margin-bottom: 20px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #e6db00;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #111;
-            margin-top: 40px;
-            border-top: 2px solid #333;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            background: hsl(234, 100%, 35%);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: hsl(0, 0%, 100%);
-            color: Black;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Official website of Antwerp Phantoms Para Ice Hockey Team">
+  <title>Antwerp Phantoms Para Ice Hockey</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <div class="fixed-countdown" id="fixedCountdown" aria-live="polite"><strong>NEPIHL27</strong><span id="fixedCountdownText">Calculating countdown…</span></div>
+  <div class="ice-particles" aria-hidden="true"></div>
+  <div class="site-shell">
+    <header class="hero">
+      <div class="hero-rink-lines" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Belgium • Para Ice Hockey</p>
+        <h1 id="siteTitle">Antwerp Phantoms<br><span>Para Ice Hockey</span></h1>
+        <p id="siteTagline" class="tagline">Strength on ice. United as one.</p>
+        <div class="hero-actions"><button class="hero-button primary" data-page-jump="information">Discover It..</button><button class="hero-button secondary" data-page-jump="contacts">Join us on the ice</button></div>
+      </div>
+      <img class="team-logo" src="assets/images/team-logo.png" alt="Antwerp Phantoms Para Ice Hockey Team logo">
+    </header>
 
-<header>
-    <h1>Antwerp Phantoms</h1>
-    <p>Para Ice Hockey Team – Antwerpen</p>
-</header>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-button active" data-page="home">Home</button>
+      <button class="nav-button" data-page="sponsors">Sponsors</button>
+      <button class="nav-button" data-page="training">Training Hours</button>
+      <button class="nav-button" data-page="information">Information</button>
+      <button class="nav-button" data-page="contacts">Contacts</button>
+      <button class="nav-button nepihl-nav" data-page="nepihl27">NEPIHL27</button>
+      <a class="nav-button settings-link" href="settings.html" aria-label="Open protected Settings">🔒 Settings</a>
+    </nav>
 
-<nav>
-    <a href="#info">Info</a>
-    <a href="#training">Training</a>
-    <a href="#locatie">Locatie</a>
-    <a href="#documenten">Documenten</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <section class="scoreboard-strip" aria-label="Team highlights">
+      <div><strong>ANTWERP</strong><span>Home of the Phantoms</span></div>
+      <div><strong>PARA ICE HOCKEY</strong><span>Speed • Skill • Teamwork</span></div>
+      <div id="eventCountdown"><strong>NEPIHL 2027</strong><span>20–21 March 2027</span></div>
+    </section>
 
-<section id="info" class="section">
-    <h2>Over Ons</h2>
-    <div class="card">
-        <p>
-            Welkom bij het <strong>Antwerp Phantoms Para Ice Hockey team</strong> – een inclusieve, gedreven en sportieve club 
-            waar iedereen welkom is om kennis te maken met para ice hockey.  
-        </p>
-        <p>
-            Deze website wordt stap voor stap uitgebreid met documenten, QR‑codes, inschrijvingsinfo, 
-            trainingsuren en meer.
-        </p>
-    </div>
-</section>
+    <main id="contentArea" class="content-area" tabindex="-1"></main>
 
-<section id="training" class="section">
-    <h2>Trainingstijden</h2>
-    <div class="card">
-        <p><strong>Woensdag:</strong> 19:15 – 20:05</p>
-        <p><strong>Zaterdag:</strong> 16:15 – 17:15</p>
-        <p>Uren kunnen wijzigen tijdens het seizoen.</p>
-    </div>
-</section>
+    <section class="sponsor-zone" aria-labelledby="sponsorZoneTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Our partners</p>
+        <h2 id="sponsorZoneTitle">Together we make para ice hockey possible</h2>
+      </div>
+      <div class="sponsor-columns">
+        <article class="sponsor-panel">
+          <h3>Current Para Ice Hockey Sponsors</h3>
+          <div id="currentSponsors" class="logo-grid"></div>
+        </article>
+        <article class="sponsor-panel">
+          <h3>Club &amp; Permanent Partners</h3>
+          <div id="permanentSponsors" class="logo-grid"></div>
+        </article>
+      </div>
+    </section>
 
-<section id="locatie" class="section">
-    <h2>Locatie</h2>
-    <div class="card">
-        <p><strong>Ijsbaan:</strong> SportOase Grootschijn / Deurne</p>
-        <p><strong>Adres:</strong> Ruggeveldlaan 488, 2100 Deurne</p>
-        <a class="btn" href="https://maps.google.com" target="_blank">Open in Google Maps</a>
-    </div>
-</section>
-
-<section id="documenten" class="section">
-    <h2>Documenten & QR‑codes</h2>
-    <div class="card">
-        <p>Hier komen later:</p>
-        <ul>
-            <li>PDF’s voor QR‑codes</li>
-            <li>Inschrijvingsformulieren</li>
-            <li>Clubreglement</li>
-            <li>Medische info</li>
-            <li>Uitleg voor nieuwe leden</li>
-        </ul>
-        <p>Deze sectie wordt dynamisch uitbreidbaar gemaakt.</p>
-    </div>
-</section>
-
-<section id="contact" class="section">
-    <h2>Contact</h2>
-    <div class="card">
-        <p><strong>Email:</strong> antwerpparaicehockey@gmail.com</p>
-        <p><strong>Team Manager:</strong> Ingrid Van De Locht</p>
-        <p><strong>Coach:</strong> Alex Fraboulet</p>
-        <a class="btn" href="mailto:antwerpparaicehockey@gmail.com">Stuur een mail</a>
-    </div>
-</section>
-
-<footer>
-    © Antwerp Phantoms Para Ice Hockey – 2016-2026
-</footer>
-
+    <footer>
+      Copyright DvD 13 PirAte Software – Founder Antwerp Phantoms Para Ice Hockey Team – C° Founder NEPIHL 🇪🇺
+    </footer>
+  </div>
+  <script src="data.js"></script>
+  <script src="site.js"></script>
 </body>
 </html>
